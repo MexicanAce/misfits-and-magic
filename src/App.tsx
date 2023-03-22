@@ -9,13 +9,13 @@ import { DiceType } from './types/Dice';
 
 function App() {
   const [character, setCharacter] = useState<Character>({
-    displayName: 'Kristof Ollivander',
-    owner: 'Nicolas Villanueva',
-    description: 'Wand Whisperer',
-    age: 16,
-    likes: ['Owls', 'Math'],
+    displayName: 'Kristina Ollivander',
+    owner: 'Iesha White',
+    description: 'Owlbear Whisperer',
+    age: 15,
+    likes: ['Owls', 'Northern Lights'],
     dislikes: ['Camping', 'Cold Weather'],
-    imageUrl: 'src/assets/character-female.png',
+    imageUrl: 'images/character-female.png',
     broom: 'The Suave Sweeper',
     adversityTokens: 0,
     brains: {

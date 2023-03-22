@@ -12,7 +12,7 @@ function CharacterModel({
   return (
     <div className="model-container">
       <img className="character" src={character.imageUrl} alt="character-png" />
-      <img className="stand" src="src/assets/stand.png" alt="stand-png" />
+      <img className="stand" src="images/stand.png" alt="stand-png" />
     </div>
   );
 }

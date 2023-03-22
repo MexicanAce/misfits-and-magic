@@ -29,7 +29,7 @@ function CharacterInventory({
           <div className="card-content">
             <img
               className="refresh"
-              src="src/assets/refresh.svg"
+              src="images/refresh.svg"
               alt="refresh"
               onClick={refreshBroom}
             />
