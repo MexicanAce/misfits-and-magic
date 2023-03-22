@@ -1,0 +1,72 @@
+@import './colors.scss';
+
+#root {
+  margin: 0;
+}
+
+.App {
+  width: calc(100vw);
+  height: calc(100vh);
+  overflow: hidden;
+
+  .main-content {
+    display: flex;
+  }
+
+  .background-image {
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/background.png');
+    background-size: cover;
+    z-index: -99;
+    position: absolute;
+  }
+
+  .background-filter {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -98;
+    background: linear-gradient(
+      90deg,
+      rgb(36, 20, 0.5) 0%,
+      rgba(36, 20, 0, 0.6) 60%,
+      rgba(255, 255, 255, 0) 80%
+    );
+  }
+
+  .character-sheet-left,
+  .character-sheet-right {
+    width: 50vw;
+  }
+}
+
+.card {
+  border: 1px solid $dark-beige;
+  min-width: 10rem;
+  font-size: 1.2rem;
+  width: 100%;
+
+  .card-title {
+    border-bottom: 1px solid $dark-beige;
+    border-bottom-left-radius: 40%;
+    border-bottom-right-radius: 40%;
+    color: $medium-beige;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0.6rem;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $light-beige;
+    height: 7rem;
+    text-align: center;
+    word-wrap: break-word;
+    position: relative;
+    padding: 0 0.2rem;
+  }
+}

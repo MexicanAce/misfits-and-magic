@@ -1,0 +1,54 @@
+.model-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+
+  .character {
+    display: block;
+    max-width: 10rem;
+    max-height: 40rem;
+    width: auto;
+    height: auto;
+
+    // shadow
+    filter: drop-shadow(17px 13px 15px rgba(0, 0, 0, 0.8));
+
+    animation: pivot 10s;
+    animation-iteration-count: infinite;
+  }
+
+  .stand {
+    display: block;
+    max-width: 230px;
+    max-height: 95px;
+    width: auto;
+    height: auto;
+    margin-top: -40px;
+  }
+}
+
+@keyframes pivot {
+  0% {
+    transform: translate(0, 0) rotateY(0deg);
+  }
+  15% {
+    transform: translate(10px, 5px) rotateY(20deg);
+  }
+  30% {
+    transform: translate(0, 0) rotateY(0deg);
+  }
+  60% {
+    transform: translate(0, 0) rotateY(0deg);
+  }
+  75% {
+    transform: translate(-10px, 5px) rotateY(-20deg);
+  }
+  90% {
+    transform: translate(0, 0) rotateY(0deg);
+  }
+  100% {
+    transform: translate(0, 0) rotateY(0deg);
+  }
+}

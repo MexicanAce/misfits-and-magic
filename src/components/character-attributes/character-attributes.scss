@@ -1,0 +1,9 @@
+.attributes-container {
+  margin-left: 2rem;
+
+  .dice-attributes {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 100%;
+  }
+}
