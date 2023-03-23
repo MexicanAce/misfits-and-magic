@@ -68,3 +68,48 @@
     padding: 0 0.2rem;
   }
 }
+
+@media screen and (orientation:portrait) {
+  html {
+    font-size: 6px;
+  }
+
+  .App {
+    .main-content {
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .character-sheet-left,
+    .character-sheet-right {
+      width: initial;
+    }
+
+    .character-sheet-left {
+      height: 50%;
+    }
+
+    .character-sheet-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50%;
+
+      .model-container {
+        justify-content: center;
+      }
+    }
+  }
+
+  .dice-svg {
+    svg {
+      zoom: 50%;
+    }
+  }
+
+  .modal-content {
+    button {
+      width: 33rem !important;
+    }
+  }
+}
