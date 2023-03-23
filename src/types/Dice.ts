@@ -6,3 +6,9 @@ export enum DiceType {
   D12 = 12,
   D20 = 20,
 }
+
+export interface DiceRoll {
+  value: number;
+  maxValue: number;
+  isMagic: boolean;
+}

@@ -27,7 +27,7 @@ function App() {
     },
     fight: {
       diceType: DiceType.D8,
-      modifier: 1,
+      modifier: 3,
     },
     flight: {
       diceType: DiceType.D12,
@@ -37,7 +37,7 @@ function App() {
     },
     charm: {
       diceType: DiceType.D20,
-      modifier: 3,
+      modifier: -1,
     },
   });
 
