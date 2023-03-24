@@ -44,12 +44,13 @@
     .model-option {
       color: black;
       background: $medium-beige;
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 2rem;
+      height: 2rem;
       display: flex;
       justify-content: center;
       align-items: center;
       border-radius: 0.4rem;
+      user-select: none;
 
       &:not(:last-child) {
         margin-right: 0.7rem;

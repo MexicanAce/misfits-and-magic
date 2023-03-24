@@ -26,14 +26,20 @@ export interface Character {
 export const CharacterModels: CharacterModel[] = [
   {
     id: 1,
-    imageUrl: 'images/character-female.png',
-    extraMargin: '0 0 0 0',
-    maxWidth: '10rem',
+    imageUrl: 'images/character-1.png',
+    extraMargin: '0 0 0.5rem 0',
+    maxWidth: '9rem',
   },
   {
     id: 2,
-    imageUrl: 'images/character-male.png',
+    imageUrl: 'images/character-2.png',
     extraMargin: '0 0 2rem 0',
+    maxWidth: '12rem',
+  },
+  {
+    id: 3,
+    imageUrl: 'images/character-3.png',
+    extraMargin: '0 0 1.5rem 0',
     maxWidth: '12rem',
   },
 ]

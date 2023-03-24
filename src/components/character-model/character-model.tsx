@@ -186,6 +186,9 @@ function CharacterModel({
       }
 
       ctx?.putImageData(imageData, 0, 0);
+
+      canvas.style.margin = character.model.extraMargin;
+      canvas.style.maxWidth = character.model.maxWidth;
     }
   }, [character.model.imageUrl, character.robeColorHue]);
 
@@ -207,13 +210,7 @@ function CharacterModel({
 
   return (
     <div className="model-container">
-      <canvas
-        className="character"
-        id="character-canvas"
-        style={{
-          margin: character.model.extraMargin,
-          maxWidth: character.model.maxWidth,
-        }}></canvas>
+      <canvas className="character" id="character-canvas"></canvas>
       <img className="stand" src="images/stand.png" alt="stand-png" />
 
       <div className="model-selector">

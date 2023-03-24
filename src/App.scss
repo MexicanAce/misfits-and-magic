@@ -72,7 +72,7 @@
 // Mobile Screen Resolutions
 @media screen and (orientation:portrait) {
   html {
-    font-size: 6px;
+    font-size: 8px;
   }
 
   .App {
@@ -88,7 +88,7 @@
 
     .character-sheet-left {
       height: 50%;
-      width: 60%;
+      width: 70%;
     }
 
     .character-sheet-right {
@@ -99,11 +99,6 @@
 
       .model-container {
         justify-content: center;
-
-        .character {
-          max-width: 25rem;
-          max-height: 50rem;
-        }
 
         .stand {
           max-width: 30rem;
@@ -122,6 +117,22 @@
   .modal-content {
     button {
       width: 33rem !important;
+    }
+
+    button:not(:last-child) {
+      margin-bottom: 2rem !important;
+    }
+
+    .cancel:after {
+      font-size: 5rem !important;
+    }
+  }
+
+  .robe-hue-selector {
+    margin-top: 1.5rem;
+
+    .MuiSlider-root {
+      padding: 12px 0;
     }
   }
 }
