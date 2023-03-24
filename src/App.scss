@@ -69,6 +69,7 @@
   }
 }
 
+// Mobile Screen Resolutions
 @media screen and (orientation:portrait) {
   html {
     font-size: 6px;
@@ -87,6 +88,7 @@
 
     .character-sheet-left {
       height: 50%;
+      width: 60%;
     }
 
     .character-sheet-right {
@@ -97,13 +99,23 @@
 
       .model-container {
         justify-content: center;
+
+        .character {
+          max-width: 25rem;
+          max-height: 50rem;
+        }
+
+        .stand {
+          max-width: 30rem;
+          max-height: 7rem;
+        }
       }
     }
   }
 
   .dice-svg {
     svg {
-      zoom: 50%;
+      zoom: 40%;
     }
   }
 

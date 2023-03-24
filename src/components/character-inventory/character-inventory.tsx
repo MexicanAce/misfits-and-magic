@@ -34,14 +34,14 @@ function CharacterInventory({
               onClick={refreshBroom}
             />
             {character.broom && <span>{character.broom}</span>}
-            {!character.broom && <div>?</div>}
+            {!character.broom && <div className='unknown'>?</div>}
           </div>
         </div>
         <div className="card">
           <div className="card-title">Wand</div>
           <div className="card-content">
             {character.wand && <span>{character.wand}</span>}
-            {!character.wand && <div>?</div>}
+            {!character.wand && <div className='unknown'>?</div>}
           </div>
         </div>
       </div>

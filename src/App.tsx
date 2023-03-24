@@ -4,7 +4,7 @@ import CharacterAttributes from './components/character-attributes/character-att
 import CharacterDescription from './components/character-description/character-description';
 import CharacterInventory from './components/character-inventory/character-inventory';
 import CharacterModel from './components/character-model/character-model';
-import { Character } from './types/Character';
+import { Character, CharacterModels } from './types/Character';
 import { DiceType } from './types/Dice';
 
 function App() {
@@ -15,8 +15,9 @@ function App() {
     age: 15,
     likes: ['Owls', 'Northern Lights'],
     dislikes: ['Camping', 'Cold Weather'],
-    imageUrl: 'images/character-female.png',
+    model: CharacterModels.filter(cm => cm.id == 2)[0],
     broom: 'The Suave Sweeper',
+    robeColorHue: 160,
     adversityTokens: 0,
     brains: {
       diceType: DiceType.D4,

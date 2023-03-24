@@ -1,3 +1,5 @@
+@import '../../colors.scss';
+
 .inventory-container {
   display: flex;
   margin-left: 2rem;
@@ -20,12 +22,32 @@
       animation: rotating 1.7s linear infinite;
     }
   }
+
+  .unknown {
+    border: 1px solid $medium-beige;
+    color: $medium-beige;
+    border-radius: 50%;
+    width: 1.7rem;
+    height: 1.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+
+    &:hover {
+      cursor: pointer;
+      color: $light-beige;
+      border-color: $light-beige;
+      border-width: 2px;
+    }
+  }
 }
 
 @keyframes rotating {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

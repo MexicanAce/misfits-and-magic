@@ -1,3 +1,5 @@
+@import '../../colors.scss';
+
 .model-container {
   height: 100%;
   display: flex;
@@ -21,11 +23,65 @@
 
   .stand {
     display: block;
-    max-width: 230px;
-    max-height: 95px;
+    max-width: 18rem;
+    max-height: 6rem;
     width: auto;
     height: auto;
-    margin-top: -40px;
+    margin-top: -3rem;
+  }
+
+  .model-selector {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      margin-right: 0.8rem;
+      font-size: 1.3rem;
+    }
+
+    .model-option {
+      color: black;
+      background: $medium-beige;
+      width: 1.5rem;
+      height: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.4rem;
+
+      &:not(:last-child) {
+        margin-right: 0.7rem;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background: $light-beige;
+      }
+    }
+
+    .selected-model {
+      background: $light-beige;
+    }
+  }
+
+  .robe-hue-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16rem;
+    margin-top: 0.5rem;
+
+    .hue-selector-label {
+      margin-right: 0.8rem;
+      font-size: 1.3rem;
+      width: 12rem;
+    }
+
+    .MuiSlider-root {
+      color: $light-beige;
+    }
   }
 }
 
@@ -33,21 +89,27 @@
   0% {
     transform: translate(0, 0) rotateY(0deg);
   }
+
   15% {
     transform: translate(10px, 5px) rotateY(20deg);
   }
+
   30% {
     transform: translate(0, 0) rotateY(0deg);
   }
+
   60% {
     transform: translate(0, 0) rotateY(0deg);
   }
+
   75% {
     transform: translate(-10px, 5px) rotateY(-20deg);
   }
+
   90% {
     transform: translate(0, 0) rotateY(0deg);
   }
+
   100% {
     transform: translate(0, 0) rotateY(0deg);
   }
