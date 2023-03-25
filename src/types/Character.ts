@@ -1,4 +1,5 @@
 import { DiceType } from './Dice';
+import { House } from './House';
 
 export interface Character {
   displayName: string;
@@ -10,7 +11,7 @@ export interface Character {
   broom?: string;
   wand?: string;
   adversityTokens: number;
-  house?: string;
+  house?: House;
   robeColorHue: number;
   model: CharacterModel;
 

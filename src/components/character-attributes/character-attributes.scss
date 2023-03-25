@@ -1,3 +1,5 @@
+@import '../../colors.scss';
+
 .attributes-container {
   margin-left: 2rem;
   display: flex;
@@ -11,5 +13,14 @@
   .extra-attributes {
     display: flex;
     flex-direction: column;
+
+    .house-name {
+      color: $light-beige;
+
+      &:hover {
+        color: $medium-beige;
+        cursor: pointer;
+      }
+    }
   }
 }

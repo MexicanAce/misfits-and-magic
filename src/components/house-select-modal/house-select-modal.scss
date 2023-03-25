@@ -1,0 +1,25 @@
+@import '../../colors.scss';
+
+.house-selector {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 100%;
+    margin-bottom: 2rem;
+    grid-row-gap: 1rem;
+    color: $medium-beige;
+
+    .current-house {
+        color: $light-beige;
+    }
+
+    .house-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            color: $light-beige;
+            cursor: pointer;
+        }
+    }
+}

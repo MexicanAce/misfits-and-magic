@@ -1,6 +1,7 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { Character } from '../../types/Character';
 import DiceAttribute from '../dice-attribute/dice-attribute';
+import HouseSelectModal from '../house-select-modal/house-select-modal';
 import UnknownValue from '../unknown-value/unknown-value';
 import './character-attributes.scss';
 
@@ -12,6 +13,8 @@ function CharacterAttributes({
   setCharacter: Dispatch<SetStateAction<Character>>;
 }) {
   const attributes = ['fight', 'brains', 'charm', 'flight', 'brawn', 'grit'];
+
+  const [openHouseSelectModal, setOpenHouseSelectModal] = useState(false);
 
   return (
     <div className="attributes-container">
@@ -32,7 +35,16 @@ function CharacterAttributes({
           <div className="card">
             <div className="card-title">House</div>
             <div className="card-content">
-              {character.house ?? <UnknownValue />}
+              {character.house == undefined ?
+                (
+                  <UnknownValue onClick={() => setOpenHouseSelectModal(true)} />
+                ) : (
+                  <div
+                    className="house-name"
+                    onClick={() => setOpenHouseSelectModal(true)}>
+                    {character.house.name}
+                  </div>
+                )}
             </div>
           </div>
         </div>
@@ -45,6 +57,14 @@ function CharacterAttributes({
           </div>
         </div>
       </div>
+
+      {openHouseSelectModal && (
+        <HouseSelectModal
+          character={character}
+          setCharacter={setCharacter}
+          open={openHouseSelectModal}
+          handleClose={() => setOpenHouseSelectModal(false)} />
+      )}
     </div>
   );
 }
