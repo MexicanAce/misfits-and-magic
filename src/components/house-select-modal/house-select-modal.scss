@@ -10,16 +10,24 @@
 
     .current-house {
         color: $light-beige;
+        filter: drop-shadow(0 0 1rem $light-beige);
     }
 
     .house-container {
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
 
         &:hover {
             color: $light-beige;
             cursor: pointer;
+            filter: drop-shadow(0 0 1rem $light-beige);
+        }
+
+        .house-logo {
+            width: 10rem;
+            height: 10rem;
         }
     }
 }

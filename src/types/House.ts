@@ -10,24 +10,24 @@ export const Houses: House[] = [
         id: 1,
         name: 'Hercinil',
         colorHue: 160, // Crimson Red
-        logoUrl: 'TBD',
+        logoUrl: 'images/houses/Hercinil.webp',
     },
     {
         id: 2,
         name: 'Aqrabus',
         colorHue: 260, // Hunter Green
-        logoUrl: 'TBD',
+        logoUrl: 'images/houses/Aqrabus.webp',
     },
     {
         id: 3,
         name: 'Messanteu',
         colorHue: 0, // Cobalt Blue
-        logoUrl: 'TBD',
+        logoUrl: 'images/houses/Messanteu.webp',
     },
     {
         id: 4,
         name: 'Chimeron', // Buttery Yellow
         colorHue: 208,
-        logoUrl: 'TBD',
+        logoUrl: 'images/houses/Chimeron.webp',
     },
 ]

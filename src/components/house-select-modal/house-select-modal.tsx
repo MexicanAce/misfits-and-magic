@@ -40,6 +40,7 @@ function HouseSelectModal({
             key={house.id}
             className={`house-container ${house.id == newHouseSelected?.id ? 'current-house' : ''}`}
             onClick={() => setNewHouseSelected(house)}>
+            <img src={house.logoUrl} className="house-logo" />
             {house.name}
           </div>
         ))

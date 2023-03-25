@@ -42,6 +42,7 @@ function CharacterAttributes({
                   <div
                     className="house-name"
                     onClick={() => setOpenHouseSelectModal(true)}>
+                    <img src={character.house.logoUrl} className="house-logo" />
                     {character.house.name}
                   </div>
                 )}

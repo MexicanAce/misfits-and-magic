@@ -15,11 +15,23 @@
     flex-direction: column;
 
     .house-name {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       color: $light-beige;
 
       &:hover {
         color: $medium-beige;
         cursor: pointer;
+        filter: drop-shadow(0 0 1rem black);
+      }
+
+      .house-logo {
+        width: 4rem;
+        height: 4rem;
+        margin-bottom: 0.6rem;
+        border-radius: 50%;
       }
     }
   }
