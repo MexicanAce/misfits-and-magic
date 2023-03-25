@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import { Character } from '../../types/Character';
 import DiceAttribute from '../dice-attribute/dice-attribute';
+import UnknownValue from '../unknown-value/unknown-value';
 import './character-attributes.scss';
 
 function CharacterAttributes({
@@ -25,6 +26,24 @@ function CharacterAttributes({
             />
           );
         })}
+      </div>
+      <div className="extra-attributes">
+        <div className="house-container">
+          <div className="card">
+            <div className="card-title">House</div>
+            <div className="card-content">
+              {character.house ?? <UnknownValue />}
+            </div>
+          </div>
+        </div>
+        <div className="adversity-container">
+          <div className="card">
+            <div className="card-title">Adversity</div>
+            <div className="card-content">
+              {character.adversityTokens}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

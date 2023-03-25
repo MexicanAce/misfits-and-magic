@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import { Character, CharacterStat } from '../../types/Character';
 import DiceSelectModal from '../dice-select-modal/dice-select-modal';
 import Dice from '../dice/dice';
+import UnknownValue from '../unknown-value/unknown-value';
 import './dice-attribute.scss';
 
 function DiceAttribute({
@@ -56,17 +57,19 @@ function DiceAttribute({
             )}
             <div className="add-modifier" onClick={() => { handleModifierUpdate(1) }}>+</div>
           </div>
-          {!characterStat.diceType && <div>?</div>}
+          {!characterStat.diceType && <UnknownValue />}
         </div>
       </div>
 
-      <DiceSelectModal
-        character={character}
-        setCharacter={setCharacter}
-        open={openDiceSelectModal}
-        handleClose={handleClose}
-        attribute={attribute}
-        characterStat={characterStat} />
+      {openDiceSelectModal && (
+        <DiceSelectModal
+          character={character}
+          setCharacter={setCharacter}
+          open={openDiceSelectModal}
+          handleClose={handleClose}
+          attribute={attribute}
+          characterStat={characterStat} />
+      )}
     </div>
   );
 }

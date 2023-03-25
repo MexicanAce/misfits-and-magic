@@ -1,9 +1,15 @@
 .attributes-container {
   margin-left: 2rem;
+  display: flex;
 
   .dice-attributes {
     display: grid;
     grid-template-columns: auto auto auto;
     width: 100%;
+  }
+
+  .extra-attributes {
+    display: flex;
+    flex-direction: column;
   }
 }

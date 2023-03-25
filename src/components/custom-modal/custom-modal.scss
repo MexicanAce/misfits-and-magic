@@ -1,0 +1,60 @@
+@import '../../colors.scss';
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .cancel {
+        position: absolute;
+        top: -0.7rem;
+        right: 0.5rem;
+
+        &:after {
+            font-size: 3rem;
+            color: $medium-beige;
+            display: inline-block;
+            content: "\00d7";
+        }
+
+        &:hover {
+            cursor: pointer;
+
+            &:after {
+                color: $light-beige;
+            }
+        }
+    }
+
+    button {
+        font-family: 'mrdarcyregular';
+        color: $light-beige;
+        text-transform: uppercase;
+        padding: 0.4rem;
+        border: none;
+        border-radius: 0.2rem;
+        width: 16rem;
+        background: linear-gradient(0deg, rgb(17 79 99) 0%, rgb(4 164 165) 100%);
+
+        &:hover {
+            cursor: pointer;
+            background: linear-gradient(0deg, rgb(22 109 138) 0%, rgb(7 204 205) 100%);
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            color: $medium-beige;
+            background: #444;
+        }
+    }
+
+    button:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    .modal-title {
+        text-align: center;
+        margin-top: 0;
+    }
+}

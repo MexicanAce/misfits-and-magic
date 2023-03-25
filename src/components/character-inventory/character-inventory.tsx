@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import { BroomPrefixes, BroomSuffixes } from '../../types/Brooms';
 import { Character } from '../../types/Character';
+import UnknownValue from '../unknown-value/unknown-value';
 import './character-inventory.scss';
 
 function CharacterInventory({
@@ -34,14 +35,14 @@ function CharacterInventory({
               onClick={refreshBroom}
             />
             {character.broom && <span>{character.broom}</span>}
-            {!character.broom && <div className='unknown'>?</div>}
+            {!character.broom && <UnknownValue />}
           </div>
         </div>
         <div className="card">
           <div className="card-title">Wand</div>
           <div className="card-content">
             {character.wand && <span>{character.wand}</span>}
-            {!character.wand && <div className='unknown'>?</div>}
+            {!character.wand && <UnknownValue />}
           </div>
         </div>
       </div>
