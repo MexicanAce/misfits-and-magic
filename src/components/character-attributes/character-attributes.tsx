@@ -16,6 +16,17 @@ function CharacterAttributes({
 
   const [openHouseSelectModal, setOpenHouseSelectModal] = useState(false);
 
+  function updateAdversity(delta: number) {
+    setCharacter((prevChar) => {
+      let newValue = prevChar.adversityTokens + delta;
+      if (newValue < 0) {
+        newValue = 0;
+      }
+
+      return { ...prevChar, adversityTokens: newValue }
+    });
+  }
+
   return (
     <div className="attributes-container">
       <div className="dice-attributes">
@@ -53,7 +64,17 @@ function CharacterAttributes({
           <div className="card">
             <div className="card-title">Adversity</div>
             <div className="card-content">
-              {character.adversityTokens}
+              <div className="adversity-tokens">
+                <span className="token-count">
+                  {character.adversityTokens}
+                </span>
+                {character.adversityTokens == 1 ? 'Token' : 'Tokens'}
+
+                {character.adversityTokens > 0 && (
+                  <div className="subtract-modifier" onClick={() => { updateAdversity(-1) }}>-</div>
+                )}
+                <div className="add-modifier" onClick={() => { updateAdversity(1) }}>+</div>
+              </div>
             </div>
           </div>
         </div>

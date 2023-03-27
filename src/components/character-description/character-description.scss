@@ -72,6 +72,8 @@
     .likes-container,
     .dislikes-container {
       display: flex;
+      justify-content: start;
+      align-items: center;
 
       .label {
         color: $dark-beige;
@@ -84,10 +86,22 @@
         margin-right: 0.3rem;
       }
 
-      .like:not(:last-child)::after,
-      .dislike:not(:last-child)::after {
+      .like:not(:last-of-type)::after,
+      .dislike:not(:last-of-type)::after {
         content: ',';
         color: $dark-beige;
+      }
+
+      .edit-button {
+        filter: brightness(0.4);
+        transition: 0.1s ease-out;
+        height: 1rem;
+        margin-bottom: 0.4rem;
+
+        &:hover {
+          cursor: pointer;
+          filter: brightness(1);
+        }
       }
     }
   }

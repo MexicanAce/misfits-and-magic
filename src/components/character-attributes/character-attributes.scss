@@ -34,5 +34,44 @@
         border-radius: 50%;
       }
     }
+
+    .adversity-tokens {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-size: 1.2rem;
+      position: relative;
+
+      .token-count {
+        font-size: 3rem;
+      }
+
+      .subtract-modifier,
+      .add-modifier {
+        position: absolute;
+        top: 1rem;
+        color: $dark-beige;
+        border: 1px solid $dark-beige;
+        border-radius: 50%;
+        height: 1.5rem;
+        width: 1.5rem;
+        user-select: none;
+
+        &:hover {
+          cursor: pointer;
+          color: $light-beige;
+          border-color: $light-beige;
+        }
+      }
+
+      .subtract-modifier {
+        left: -1.1rem;
+      }
+
+      .add-modifier {
+        right: -1.1rem;
+      }
+    }
   }
 }

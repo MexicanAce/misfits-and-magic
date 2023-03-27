@@ -1,5 +1,6 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { Character } from '../../types/Character';
+import LikesModal from '../likes-modal/likes-modal';
 import './character-description.scss';
 
 function CharacterDescription({
@@ -9,6 +10,9 @@ function CharacterDescription({
   character: Character;
   setCharacter: Dispatch<SetStateAction<Character>>;
 }) {
+  const [openLikesModal, setOpenLikesModal] = useState(false);
+  const [openDislikesModal, setOpenDislikesModal] = useState(false);
+
   return (
     <div className="description-container">
       <div className="name-info">
@@ -82,6 +86,11 @@ function CharacterDescription({
               </div>
             );
           })}
+          <img
+            className="edit-button"
+            src="images/edit.svg"
+            alt="edit"
+            onClick={() => setOpenLikesModal(true)} />
         </div>
         <div className="dislikes-container">
           <div className="label">Dislikes</div>
@@ -92,8 +101,30 @@ function CharacterDescription({
               </div>
             );
           })}
+          <img
+            className="edit-button"
+            src="images/edit.svg"
+            alt="edit"
+            onClick={() => setOpenDislikesModal(true)} />
         </div>
       </div>
+
+      {openLikesModal && (
+        <LikesModal
+          character={character}
+          setCharacter={setCharacter}
+          open={openLikesModal}
+          handleClose={() => setOpenLikesModal(false)} />
+      )}
+
+      {openDislikesModal && (
+        <LikesModal
+          character={character}
+          setCharacter={setCharacter}
+          open={openDislikesModal}
+          handleClose={() => setOpenDislikesModal(false)}
+          isDislikes={true} />
+      )}
     </div>
   );
 }
