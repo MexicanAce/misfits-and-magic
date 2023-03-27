@@ -15,25 +15,25 @@ function CreditsModal({
       title={'Credits'}>
       <div className="credits">
         <div>
-          Website created by <a href="https://nvillanueva.com">Nicolas Villanueva</a>
+          Website created by <a target="_blank" href="https://nvillanueva.com">Nicolas Villanueva</a>
         </div>
         <div>
-          Source code is available on <a href="https://github.com/MexicanAce/misfits-and-magic">GitHub</a>
+          Source code is available on <a target="_blank" href="https://github.com/MexicanAce/misfits-and-magic">GitHub</a>
         </div>
         <div>
           Based on the character sheets from
-          <a href="https://www.dropout.tv/dimension-20-misfits-and-magic">
+          <a target="_blank" href="https://www.dropout.tv/dimension-20-misfits-and-magic">
             Dimension20's Misfits & Magic
           </a>
           series
         </div>
         <div>
           Art from the series by
-          <a href="https://twitter.com/ailustrar">
+          <a target="_blank" href="https://twitter.com/ailustrar">
             Adrián Ibarra Lugo (characters)
           </a>
           and
-          <a href="https://twitter.com/chamonkee">
+          <a target="_blank" href="https://twitter.com/chamonkee">
             William Kirkby (maps)
           </a>
         </div>

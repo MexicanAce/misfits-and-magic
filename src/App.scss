@@ -5,8 +5,9 @@
 }
 
 .App {
-  width: calc(100vw);
-  height: calc(100vh);
+  width: 100vw;
+  height: 100vh;
+  max-height: -webkit-fill-available;
   overflow: hidden;
   position: relative;
 
@@ -77,6 +78,10 @@
   }
 
   .App {
+    .background-filter {
+      background: linear-gradient(90deg, rgb(36, 20, 1) 0%, rgba(36, 20, 0, 0.6) 25%, rgba(255, 255, 255, 0) 135%);
+    }
+
     .main-content {
       flex-direction: column;
       height: 100vh;
@@ -127,6 +132,10 @@
     .cancel:after {
       font-size: 5rem !important;
     }
+
+    .add-another-button {
+      width: 10rem !important;
+    }
   }
 
   .robe-hue-selector {
@@ -136,4 +145,23 @@
       padding: 12px 0;
     }
   }
+
+  .MuiPaper-root.MuiMenu-paper {
+    ul {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    li {
+      padding-top: 0;
+      padding-bottom: 0;
+      min-height: 3rem;
+    }
+
+    hr {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
 }
