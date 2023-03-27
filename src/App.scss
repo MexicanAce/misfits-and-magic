@@ -8,6 +8,7 @@
   width: calc(100vw);
   height: calc(100vh);
   overflow: hidden;
+  position: relative;
 
   .main-content {
     display: flex;

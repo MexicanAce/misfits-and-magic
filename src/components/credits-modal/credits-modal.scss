@@ -1,0 +1,18 @@
+@import '../../colors.scss';
+
+.credits {
+    text-align: center;
+    box-shadow: 0 0 5rem rgba(0, 0, 0, 55%);
+    background-color: rgba(0, 0, 0, 20%);
+    text-shadow: 0 0 2rem black;
+
+    div {
+        margin-top: 1.5rem;
+        line-height: 1.4rem;
+    }
+
+    a {
+        color: $light-beige;
+        margin: 0 0.2rem;
+    }
+}
