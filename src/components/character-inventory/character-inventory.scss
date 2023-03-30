@@ -22,6 +22,19 @@
       animation: rotating 1.7s linear infinite;
     }
   }
+
+  .wand-description {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 0 3rem rgba(0, 0, 0, 50%);
+      background: rgba(0, 0, 0, 27%);
+      color: $medium-beige;
+    }
+  }
 }
 
 @keyframes rotating {

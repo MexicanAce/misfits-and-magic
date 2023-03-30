@@ -1,7 +1,8 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { BroomPrefixes, BroomSuffixes } from '../../types/Brooms';
 import { Character } from '../../types/Character';
 import UnknownValue from '../unknown-value/unknown-value';
+import WandSelectModal from '../wand-select-modal/wand-select-modal';
 import './character-inventory.scss';
 
 function CharacterInventory({
@@ -11,6 +12,8 @@ function CharacterInventory({
   character: Character;
   setCharacter: Dispatch<SetStateAction<Character>>;
 }) {
+  const [openWandSelectModal, setOpenWandSelectModal] = useState(false);
+
   function refreshBroom() {
     const prefix =
       BroomPrefixes[Math.floor(Math.random() * BroomPrefixes.length)];
@@ -41,11 +44,25 @@ function CharacterInventory({
         <div className="card">
           <div className="card-title">Wand</div>
           <div className="card-content">
-            {character.wand && <span>{character.wand}</span>}
-            {!character.wand && <UnknownValue />}
+            {character.wand && (
+              <div className="wand-description" onClick={() => setOpenWandSelectModal(true)}>
+                <span>{character.wand.wood},</span>
+                <span>{character.wand.core} Core</span>
+              </div>
+            )}
+            {!character.wand && <UnknownValue onClick={() => setOpenWandSelectModal(true)} />}
           </div>
         </div>
       </div>
+
+      {openWandSelectModal && (
+        <WandSelectModal
+          character={character}
+          setCharacter={setCharacter}
+          open={openWandSelectModal}
+          handleClose={() => setOpenWandSelectModal(false)}
+        />
+      )}
     </div>
   );
 }

@@ -9,7 +9,7 @@ export interface Character {
   likes: string[];
   dislikes: string[];
   broom?: string;
-  wand?: string;
+  wand?: Wand;
   adversityTokens: number;
   house?: House;
   robeColorHue: number;
@@ -55,6 +55,11 @@ export interface CharacterModel {
 export interface CharacterStat {
   modifier?: number;
   diceType?: DiceType;
+}
+
+export interface Wand {
+  wood?: string;
+  core?: string;
 }
 
 export const DefaultCharacter: Character = {
