@@ -18,6 +18,7 @@ function LikesModal({
 }) {
 
   const [newLikes, setNewLikes] = useState<string[]>(isDislikes ? character.dislikes : character.likes);
+  const [newLike, setNewLike] = useState<string>('');
 
   function onConfirm() {
     if (isDislikes) {
@@ -31,6 +32,11 @@ function LikesModal({
     }
 
     handleClose();
+  }
+
+  function addNewLike() {
+    setNewLikes(prevArray => [...prevArray, newLike]);
+    setNewLike('');
   }
 
   return (
@@ -49,16 +55,22 @@ function LikesModal({
               }} />
               <div className="remove-like" onClick={() => {
                 setNewLikes(prevArray => prevArray.filter((x, i) => likeIndex != i))
-              }}></div>
+              }}>&times;</div>
             </li>
           ))
           }
-          <li>
-            <button
-              className="add-another-button"
-              onClick={() => setNewLikes(prevArray => [...prevArray, isDislikes ? 'New Dislike' : 'New Like'])}>
-              Add another
-            </button>
+          <li className='like-container new-like'>
+            <input
+              type="text"
+              placeholder={`New ${isDislikes ? 'Dislike' : 'Like'} (e.g. Magic)`}
+              value={newLike}
+              onChange={(e) => { setNewLike(e.target.value) }}
+              onKeyDown={(e) => { if (e.key == 'Enter') { addNewLike() } }}
+            />
+            <div className="remove-like add-like" onClick={() => {
+              setNewLikes(prevArray => [...prevArray, newLike]);
+              setNewLike('');
+            }}>&times;</div>
           </li>
         </ul>
       </div>
