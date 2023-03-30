@@ -35,6 +35,10 @@ function LikesModal({
   }
 
   function addNewLike() {
+    if (newLike == '' || newLike == undefined) {
+      return;
+    }
+
     setNewLikes(prevArray => [...prevArray, newLike]);
     setNewLike('');
   }
@@ -67,10 +71,9 @@ function LikesModal({
               onChange={(e) => { setNewLike(e.target.value) }}
               onKeyDown={(e) => { if (e.key == 'Enter') { addNewLike() } }}
             />
-            <div className="remove-like add-like" onClick={() => {
-              setNewLikes(prevArray => [...prevArray, newLike]);
-              setNewLike('');
-            }}>&times;</div>
+            <div className="remove-like add-like" onClick={() => { addNewLike() }}>
+              &times;
+            </div>
           </li>
         </ul>
       </div>
