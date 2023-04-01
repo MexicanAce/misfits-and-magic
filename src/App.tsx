@@ -1,12 +1,11 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.scss';
 import CharacterAttributes from './components/character-attributes/character-attributes';
 import CharacterDescription from './components/character-description/character-description';
 import CharacterInventory from './components/character-inventory/character-inventory';
 import CharacterModel from './components/character-model/character-model';
 import HamburgerMenu from './components/hamburger-menu/hamburger-menu';
-import { Character, CharacterModels, DefaultCharacter } from './types/Character';
-import { DiceType } from './types/Dice';
+import { Character, DefaultCharacter } from './types/Character';
 
 function App() {
   const LocalStorageCharacterKey = 'mnm-character-v1';

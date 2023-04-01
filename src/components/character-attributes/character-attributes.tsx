@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import { Character } from '../../types/Character';
+import CustomSwitch from '../custom-switch/custom-switch';
 import DiceAttribute from '../dice-attribute/dice-attribute';
 import HouseSelectModal from '../house-select-modal/house-select-modal';
 import UnknownValue from '../unknown-value/unknown-value';
@@ -15,6 +16,7 @@ function CharacterAttributes({
   const attributes = ['fight', 'brains', 'charm', 'flight', 'brawn', 'grit'];
 
   const [openHouseSelectModal, setOpenHouseSelectModal] = useState(false);
+  const [useMagic, setUseMagic] = useState(false);
 
   function updateAdversity(delta: number) {
     setCharacter((prevChar) => {
@@ -29,17 +31,25 @@ function CharacterAttributes({
 
   return (
     <div className="attributes-container">
-      <div className="dice-attributes">
-        {attributes.map((attribute) => {
-          return (
-            <DiceAttribute
-              key={attribute}
-              attribute={attribute}
-              character={character}
-              setCharacter={setCharacter}
-            />
-          );
-        })}
+      <div className="dice-container">
+        <div className="dice-controller">
+          <div className="is-magic-roll">
+            <CustomSwitch value={useMagic} setValue={setUseMagic} label="Magic Roll (+D4)" labelOnRight={true} />
+          </div>
+        </div>
+        <div className="dice-attributes">
+          {attributes.map((attribute) => {
+            return (
+              <DiceAttribute
+                key={attribute}
+                attribute={attribute}
+                character={character}
+                setCharacter={setCharacter}
+                isMagic={useMagic}
+              />
+            );
+          })}
+        </div>
       </div>
       <div className="extra-attributes">
         <div className="house-container">

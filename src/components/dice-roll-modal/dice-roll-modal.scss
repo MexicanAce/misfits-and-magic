@@ -1,13 +1,5 @@
 @import '../../colors.scss';
 
-.dice-selector {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    width: 100%;
-    margin-bottom: 2rem;
-    grid-row-gap: 1rem;
-}
-
 .roll-results {
     display: flex;
     justify-content: center;

@@ -3,6 +3,12 @@
 .attributes-container {
   margin-left: 2rem;
   display: flex;
+  align-items: end;
+
+  .dice-controller {
+    display: flex;
+    margin-bottom: 0.2rem;
+  }
 
   .dice-attributes {
     display: grid;
@@ -13,6 +19,7 @@
   .extra-attributes {
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     .house-name {
       display: flex;

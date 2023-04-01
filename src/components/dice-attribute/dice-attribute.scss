@@ -29,8 +29,8 @@
     justify-content: center;
     align-items: center;
     opacity: 0%;
-    color: rgb(0, 253, 255);
-    border: 1px solid rgb(0, 253, 255);
+    color: $light-blue;
+    border: 1px solid $light-blue;
     border-radius: 50%;
     height: 0.3rem;
     width: 0.3rem;
@@ -63,5 +63,23 @@
     }
 
     cursor: pointer;
+  }
+}
+
+.dice-container {
+  width: 100%;
+
+  .edit-button {
+    filter: brightness(0.4);
+    transition: 0.1s ease-out;
+    height: 1.4rem;
+    position: absolute;
+    top: 0.4rem;
+    right: 0.8rem;
+
+    &:hover {
+      cursor: pointer;
+      filter: brightness(1);
+    }
   }
 }

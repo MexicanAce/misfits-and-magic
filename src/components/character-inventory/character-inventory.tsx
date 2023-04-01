@@ -26,7 +26,7 @@ function CharacterInventory({
   }
 
   return (
-    <div style={{ width: '100%' }}>
+    <div style={{ marginLeft: '2rem' }}>
       <div className="inventory-container">
         <div className="card">
           <div className="card-title">Broom</div>

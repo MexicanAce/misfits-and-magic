@@ -1,33 +1,26 @@
-import { Dispatch, Fragment, SetStateAction, useState } from 'react';
-import { Character, CharacterStat } from '../../types/Character';
-import './dice-select-modal.scss';
+import { Fragment, useEffect, useState } from 'react';
+import { CharacterStat } from '../../types/Character';
+import './dice-roll-modal.scss';
 import Dice from '../dice/dice';
 import { DiceRoll, DiceType } from '../../types/Dice';
 import CustomModal from '../custom-modal/custom-modal';
 
-function DiceSelectModal({
-  character,
-  setCharacter,
+function DiceRollModal({
   open,
   handleClose,
-  attribute,
   characterStat,
+  isMagic,
 }: {
-  character: Character;
-  setCharacter: Dispatch<SetStateAction<Character>>;
   open: boolean;
   handleClose: () => void;
-  attribute: string;
   characterStat: CharacterStat;
+  isMagic: boolean;
 }) {
 
-  const [showRoll, setShowRoll] = useState<boolean>(false);
-  const [showEditDie, setShowEditDie] = useState<boolean>(false);
   const [diceRollComplete, setDiceRollComplete] = useState<boolean>(false);
   const [diceRolls, setDiceRolls] = useState<DiceRoll[]>([]);
-  const [newDieSelected, setNewDieSelected] = useState<DiceType | undefined>(characterStat.diceType);
 
-  function rollDice(isMagic: boolean) {
+  function rollDice(isMagicAction: boolean) {
     if (!characterStat.diceType) {
       setDiceRollComplete(false);
       return;
@@ -49,7 +42,7 @@ function DiceSelectModal({
       return;
     }
 
-    if (isMagic) {
+    if (isMagicAction) {
       const magicRoll: DiceRoll = {
         value: Math.ceil(Math.random() * DiceType.D4),
         maxValue: DiceType.D4,
@@ -61,26 +54,22 @@ function DiceSelectModal({
     setDiceRollComplete(true);
   }
 
-  function onConfirmDieUpdate() {
-    setCharacter((prevChar) => {
-      const copyOfPrevious = { ...prevChar };
-      (copyOfPrevious[attribute as keyof Character] as CharacterStat).diceType = newDieSelected;
-      return copyOfPrevious;
-    });
-    handleClose();
-  }
+  useEffect(() => {
+    rollDice(isMagic);
+
+    return () => {
+      setDiceRolls([]);
+    }
+  }, []);
 
   return (
     <CustomModal
       open={open}
       onClose={handleClose}
-      title={showEditDie ? `Assign Die for ${attribute}` : undefined}>
-      {!showRoll && !showEditDie && (
-        <>
-          <button className="modal-action-button" onClick={() => { setShowRoll(value => !value); rollDice(true); }}>Cast Magic (+D4)</button>
-          <button className="modal-action-button" onClick={() => { setShowRoll(value => !value); rollDice(false); }}>Normal Action</button>
-          <button className="modal-button" onClick={() => { setShowEditDie(value => !value) }}>Edit Die</button>
-        </>
+      title={undefined}>
+
+      {!diceRollComplete && (
+        <div className="roll-in-progess">Rolling...</div>
       )}
 
       {diceRollComplete && (
@@ -119,35 +108,8 @@ function DiceSelectModal({
           <button className="modal-button" onClick={handleClose} style={{ marginTop: '1rem' }}>OK</button>
         </>
       )}
-
-      {showEditDie && (
-        <>
-          <div className="dice-selector">
-            <>
-              {Object.values(DiceType)
-                .filter(x => { return typeof x == 'number' })
-                .map((diceType, diceTypeIndex) => (
-                  <Dice
-                    key={diceTypeIndex}
-                    className={newDieSelected == diceType as DiceType ? 'selected-die' : 'unselected-die'}
-                    value={diceType as number}
-                    type={diceType as number}
-                    isMagic={newDieSelected != diceType as number}
-                    onClick={() => { setNewDieSelected(diceType as DiceType) }} />
-                ))
-              }
-            </>
-          </div>
-          <button
-            className="modal-button"
-            onClick={onConfirmDieUpdate}
-            disabled={newDieSelected == characterStat.diceType}>
-            Confirm
-          </button>
-        </>
-      )}
     </CustomModal>
   );
 }
 
-export default DiceSelectModal;
+export default DiceRollModal;

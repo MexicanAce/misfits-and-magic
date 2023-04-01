@@ -55,6 +55,7 @@
     text-transform: uppercase;
     text-align: center;
     padding: 0.6rem;
+    position: relative;
   }
 
   .card-content {
@@ -83,7 +84,7 @@
     }
 
     .main-content {
-      flex-direction: column;
+      flex-direction: row;
       height: 100vh;
     }
 
@@ -94,20 +95,52 @@
 
     .character-sheet-left {
       height: 50%;
-      width: 70%;
+      width: 50%;
+
+      .description-container {
+        width: 100vw;
+      }
+
+      .inventory-container {
+        flex-direction: column;
+
+        .card {
+          margin-left: 0;
+        }
+      }
+
+      .attributes-container {
+        flex-direction: column;
+        align-items: start;
+
+        .dice-container {
+          width: 100%;
+
+          .dice-attributes {
+            grid-template-columns: auto auto;
+          }
+        }
+
+        .extra-attributes {
+          width: 100%;
+        }
+      }
     }
 
     .character-sheet-right {
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 50%;
+      height: 100%;
+      width: 50%;
+      overflow: hidden;
 
       .model-container {
-        justify-content: center;
+        justify-content: start;
+        margin-top: 50vh;
 
         .stand {
-          max-width: 30rem;
+          max-width: 70%;
           max-height: 7rem;
         }
       }
@@ -117,6 +150,11 @@
   .dice-svg {
     svg {
       zoom: 40%;
+    }
+
+    .sparkler-light {
+      top: 160% !important;
+      left: 50% !important;
     }
   }
 

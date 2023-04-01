@@ -129,13 +129,16 @@ function CharacterModel({
 
   useEffect(() => {
     var canvas = document.getElementById('character-canvas') as HTMLCanvasElement;
-    var ctx = canvas.getContext('2d');
+    var ctx = canvas.getContext('2d', {
+      willReadFrequently: true,
+    } as CanvasRenderingContext2DSettings);
     var img = new Image;
     // img.src = URL.createObjectURL(e.target.files[0]); // Use if uploaded custom image
     img.src = character.model.imageUrl;
     img.onload = function () {
       canvas.width = img.width;
       canvas.height = img.height;
+
       ctx?.drawImage(img, 0, 0, img.width, img.height);
       const imageData = ctx?.getImageData(0, 0, canvas.width, canvas.height);
 
