@@ -89,7 +89,7 @@ function DiceRollModal({
             )
             )}
 
-            {characterStat.modifier && (
+            {characterStat.modifier != undefined && characterStat.modifier != 0 && (
               <>
                 {characterStat.modifier > 0 ?
                   (<span className="plus">+</span>) :

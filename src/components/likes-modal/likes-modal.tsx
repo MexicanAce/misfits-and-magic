@@ -66,6 +66,7 @@ function LikesModal({
           <li className='like-container new-like'>
             <input
               type="text"
+              autoFocus
               placeholder={`New ${isDislikes ? 'Dislike' : 'Like'} (e.g. Magic)`}
               value={newLike}
               onChange={(e) => { setNewLike(e.target.value) }}

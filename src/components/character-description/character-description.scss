@@ -74,6 +74,7 @@
       display: flex;
       justify-content: start;
       align-items: center;
+      flex-wrap: wrap;
 
       .label {
         color: $dark-beige;
@@ -83,13 +84,14 @@
 
       .like,
       .dislike {
-        margin-right: 0.3rem;
+        margin-right: 0.2rem;
       }
 
       .like:not(:last-of-type)::after,
       .dislike:not(:last-of-type)::after {
-        content: ',';
+        content: '/';
         color: $dark-beige;
+        margin-left: 0.2rem;
       }
 
       .edit-button {
@@ -97,6 +99,7 @@
         transition: 0.1s ease-out;
         height: 1rem;
         margin-bottom: 0.4rem;
+        margin-left: 0.2rem;
 
         &:hover {
           cursor: pointer;

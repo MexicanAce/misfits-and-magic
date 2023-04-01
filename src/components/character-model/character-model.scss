@@ -71,17 +71,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 16rem;
+    width: 25rem;
     margin-top: 0.5rem;
 
     .hue-selector-label {
-      margin-right: 0.8rem;
       font-size: 1.3rem;
-      width: 12rem;
+      width: 7rem;
     }
 
-    .MuiSlider-root {
-      color: $light-beige;
+    input {
+      appearance: none;
+      color: $medium-beige;
+      background: $medium-beige;
+      width: 9rem;
+      margin: 0.2rem;
+      appearance: none;
+      height: 0.3rem;
+      border-radius: 0.3rem;
+
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        height: 1.4rem;
+        width: 1.4rem;
+        background: $light-beige;
+        border-radius: 50%;
+        cursor: pointer;
+      }
     }
   }
 }

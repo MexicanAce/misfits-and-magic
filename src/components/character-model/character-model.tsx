@@ -1,5 +1,4 @@
-import Slider from '@mui/material/Slider';
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Character, CharacterModels } from '../../types/Character';
 import './character-model.scss';
 
@@ -10,6 +9,8 @@ function CharacterModel({
   character: Character;
   setCharacter: Dispatch<SetStateAction<Character>>;
 }) {
+  const [colorHue, setColorHue] = useState<number>(character.robeColorHue);
+
   interface RGB {
     r: number,
     g: number,
@@ -230,11 +231,16 @@ function CharacterModel({
 
       <div className="robe-hue-selector">
         <span className='hue-selector-label'>Robe Hue</span>
-        <Slider
-          value={character.robeColorHue}
+        <input
+          type="range"
           min={0}
           max={360}
-          onChangeCommitted={(e, value) => { onSliderChange(value as number) }}></Slider>
+          value={colorHue}
+          onMouseUp={() => { onSliderChange(colorHue) }} // For desktop
+          onTouchEnd={() => { onSliderChange(colorHue) }} // For mobile
+          onKeyUp={() => { onSliderChange(colorHue) }} // For a11y
+          onChange={(e) => { setColorHue(Number(e.target.value)) }}
+        />
       </div>
     </div>
   );
