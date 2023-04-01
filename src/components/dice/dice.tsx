@@ -55,7 +55,7 @@ function Dice({
   switch (type) {
     case DiceType.D4:
       diceShape = (
-        <svg width="72" height="72">
+        <svg width="72" height="72" viewBox='0 0 72 72'>
           {diceGradient}
           <polygon points="0 67,36 5,72 67" fill={`url(#${isMagic ? 'grad2' : 'grad1'})`} />
         </svg>
@@ -63,15 +63,15 @@ function Dice({
       break;
     case DiceType.D6:
       diceShape = (
-        <svg width="60" height="60">
+        <svg width="60" height="60" viewBox='0 0 60 60'>
           {diceGradient}
-          <polygon points="0 0,0 60,60 60,60 0" fill={`url(#${isMagic ? 'grad2' : 'grad1'})`} />
+          <polygon points="5 5,5 55,55 55,55 5" fill={`url(#${isMagic ? 'grad2' : 'grad1'})`} />
         </svg>
       );
       break;
     case DiceType.D8:
       diceShape = (
-        <svg width="60" height="70">
+        <svg width="60" height="70" viewBox='0 0 60 70'>
           {diceGradient}
           <polygon points="0 35,30 70,60 35,30 0" fill={`url(#${isMagic ? 'grad2' : 'grad1'})`} />
         </svg>
@@ -79,7 +79,7 @@ function Dice({
       break;
     case DiceType.D10:
       diceShape = (
-        <svg width="80" height="80">
+        <svg width="80" height="80" viewBox='0 0 80 80'>
           {diceGradient}
           <polygon points="0 40,40 80,80 40,40 0" fill={`url(#${isMagic ? 'grad2' : 'grad1'})`} />
         </svg>
@@ -93,6 +93,7 @@ function Dice({
           xmlns="http://www.w3.org/2000/svg"
           width="66"
           height="76"
+          viewBox='0 0 66 76'
         >
           {diceGradient}
           <path

@@ -11,6 +11,10 @@ function CharacterModel({
 }) {
   const [colorHue, setColorHue] = useState<number>(character.robeColorHue);
 
+  useEffect(() => {
+    setColorHue(character.robeColorHue);
+  }, [character.robeColorHue]);
+
   interface RGB {
     r: number,
     g: number,

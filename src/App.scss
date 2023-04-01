@@ -106,6 +106,10 @@
 
         .card {
           margin-left: 0;
+
+          .card-content {
+            height: 5rem;
+          }
         }
       }
 
@@ -122,7 +126,12 @@
         }
 
         .extra-attributes {
-          width: 100%;
+          flex-direction: row;
+
+          .house-container,
+          .adversity-container {
+            width: 100%;
+          }
         }
       }
     }
@@ -148,10 +157,6 @@
   }
 
   .dice-svg {
-    svg {
-      zoom: 40%;
-    }
-
     .sparkler-light {
       top: 160% !important;
       left: 50% !important;
