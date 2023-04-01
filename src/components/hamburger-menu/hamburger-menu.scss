@@ -17,7 +17,7 @@
 }
 
 .MuiPaper-root.MuiMenu-paper {
-  background-color: $dark-beige;
+  background: linear-gradient(90deg, $dark-beige 0%, lighten($dark-beige, 12%) 100%);
   background-size: cover;
   color: $light-beige;
 
