@@ -16,7 +16,7 @@ function CharacterAttributes({
   const attributes = ['fight', 'brains', 'charm', 'flight', 'brawn', 'grit'];
 
   const [openHouseSelectModal, setOpenHouseSelectModal] = useState(false);
-  const [useMagic, setUseMagic] = useState(false);
+  const [useMagic, setUseMagic] = useState(true);
 
   function updateAdversity(delta: number) {
     setCharacter((prevChar) => {
