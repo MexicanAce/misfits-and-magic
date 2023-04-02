@@ -49,6 +49,12 @@ export const CharacterModels: CharacterModel[] = [
     extraMargin: '0 0 1.5rem 0',
     maxWidth: '14rem',
   },
+  {
+    id: 5,
+    imageUrl: 'images/character-5.png',
+    extraMargin: '0 0 1.5rem 0',
+    maxWidth: '13rem',
+  },
 ]
 
 export interface CharacterModel {
