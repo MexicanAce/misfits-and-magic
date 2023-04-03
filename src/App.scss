@@ -72,6 +72,14 @@
   }
 }
 
+@media (max-height: 1000px) {
+
+  /* some CSS for smaller resolutions */
+  html {
+    font-size: 12px;
+  }
+}
+
 // Mobile Screen Resolutions
 @media screen and (orientation:portrait) {
   html {
