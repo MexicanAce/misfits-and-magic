@@ -23,6 +23,14 @@ const getNetworkConfig = () => {
         verifyURL:
           "https://zksync2-testnet-explorer.zksync.dev/contract_verification",
       };
+    case "mainnet":
+      return {
+        url: "https://mainnet.era.zksync.io",
+        ethNetwork: "mainnet",
+        zksync: true,
+        verifyURL:
+          "https://explorer.zksync.io/contract_verification",
+      };
     default:
       throw new Error(`Unsupported DEPLOY_ENV: ${env}`);
   }
@@ -35,12 +43,12 @@ const config: HardhatUserConfig = {
     version: "latest",
     settings: {},
   },
-  defaultNetwork: "zkSyncTestnet",
+  defaultNetwork: "zkSyncNetwork",
   networks: {
     hardhat: {
       zksync: false,
     },
-    zkSyncTestnet: networkConfig,
+    zkSyncNetwork: networkConfig,
   },
   solidity: {
     version: "0.8.17",

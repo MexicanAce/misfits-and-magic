@@ -23,8 +23,8 @@
         "zksync-web3": "^0.14.3"
     },
     "scripts": {
-        "test": "NODE_ENV=local hardhat test --network zkSyncTestnet",
-        "deploy": "NODE_ENV=local hardhat deploy-zksync --script deploy.ts",
+        "test": "DEPLOY_ENV=local hardhat test --network zkSyncNetwork",
+        "deploy": "hardhat deploy-zksync --script deploy.ts",
         "compile": "hardhat compile"
     }
 }

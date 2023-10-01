@@ -21,8 +21,8 @@ if (!NFT_COLLECTION_ADDRESS)
   throw "⛔️ ADDRESS_OF_NFT_COLLECTION_CONTRACT not detected! Add it to the .env file!";
 
 export default async function (hre: HardhatRuntimeEnvironment) {
-  console.log(`Running deploy script for the NftGatedPaymaster contract...`);
-  const network = hre.userConfig.networks?.zkSyncTestnet;
+  console.log(`Running deploy script for the Characters & NftGatedPaymaster contract...`);
+  const network = hre.userConfig.networks?.zkSyncNetwork;
   const provider =  new Provider((network as HttpNetworkUserConfig).url);
   const wallet = new Wallet(PRIVATE_KEY);
   const deployer = new Deployer(hre, wallet);
@@ -38,7 +38,7 @@ export default async function (hre: HardhatRuntimeEnvironment) {
     // Verify contract programmatically
     //
     // Contract MUST be fully qualified name (e.g. path/sourceName:contractName)
-    const contractFullyQualifedName = "contracts/utils/Characters.sol:Characters";
+    const contractFullyQualifedName = "contracts/Characters.sol:Characters";
     const verificationId = await hre.run("verify:verify", {
       address: contractAddress,
       contract: contractFullyQualifedName,
