@@ -1,7 +1,7 @@
 import Divider from '@mui/material/Divider';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useContext, useState } from 'react';
 import { Character, DefaultCharacter } from '../../types/Character';
 import backgroundImageUrl from '../../assets/background.png';
 import './hamburger-menu.scss';
@@ -9,6 +9,9 @@ import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import CharacterUploadModal from '../character-upload-modal/character-upload-modal';
 import CreditsModal from '../credits-modal/credits-modal';
+import WalletButton from '../wallet-button/wallet-button';
+import Web3Context from '../../context/web3-context';
+import CharacterImportModal from '../character-import-modal/character-import-modal';
 
 function HamburgerMenu({
   character,
@@ -19,8 +22,10 @@ function HamburgerMenu({
 }) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [openSuccessSnack, setOpenSuccessSnack] = useState(false);
+  const [openCharacterImportModal, setOpenCharacterImportModal] = useState(false);
   const [openCharacterUploadModal, setOpenCharacterUploadModal] = useState(false);
   const [openCreditsModal, setOpenCreditsModal] = useState(false);
+  const web3Context = useContext(Web3Context);
 
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -29,7 +34,6 @@ function HamburgerMenu({
   const handleClose = () => {
     setAnchorEl(null);
   };
-
 
   const handleExportCharacter = () => {
     navigator.clipboard.writeText(JSON.stringify(character, null, 2));
@@ -65,15 +69,35 @@ function HamburgerMenu({
         <Divider />
         <MenuItem onClick={handleExportCharacter}>
           <img src="images/download.svg" />
-          Export Character
+          Export to Clipboard
         </MenuItem>
-        <MenuItem onClick={() => { handleClose(); setOpenCharacterUploadModal(true) }}>
+        <MenuItem onClick={() => { handleClose(); setOpenCharacterImportModal(true) }}>
           <img src="images/upload.svg" />
-          Upload Character
+          Import Character
         </MenuItem>
+        {web3Context.walletAddress && (
+          <MenuItem onClick={() => { handleClose(); setOpenCharacterUploadModal(true) }}>
+            <img src="images/upload.svg" />
+            Upload Character
+          </MenuItem>
+        )}
         <Divider />
         <MenuItem onClick={() => { handleClose(); setOpenCreditsModal(true) }}>Credits</MenuItem>
+        <Divider />
+        <WalletButton
+          character={character}
+          setCharacter={setCharacter}
+        />
       </Menu>
+
+      {openCharacterImportModal && (
+        <CharacterImportModal
+          character={character}
+          setCharacter={setCharacter}
+          open={openCharacterImportModal}
+          handleClose={() => setOpenCharacterImportModal(false)}
+        />
+      )}
 
       {openCharacterUploadModal && (
         <CharacterUploadModal

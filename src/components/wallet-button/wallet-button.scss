@@ -1,0 +1,26 @@
+@import '../../colors.scss';
+
+.wallet-button {
+    button {
+        font-family: 'mrdarcyregular';
+        color: $light-beige;
+        text-transform: uppercase;
+        padding: 0.4rem;
+        border: none;
+        border-radius: 0.2rem;
+        width: 16rem;
+        background: linear-gradient(0deg, rgb(17 79 99) 0%, rgb(4 164 165) 100%);
+        margin: 0 1rem;
+
+        &:hover {
+            cursor: pointer;
+            background: linear-gradient(0deg, rgb(22 109 138) 0%, rgb(7 204 205) 100%);
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            color: $medium-beige;
+            background: #444;
+        }
+    }
+}
