@@ -75,7 +75,7 @@ function HamburgerMenu({
           <img src="images/upload.svg" />
           Import Character
         </MenuItem>
-        {!web3Context.walletAddress && (
+        {web3Context.walletAddress && (
           <MenuItem onClick={() => { handleClose(); setOpenCharacterUploadModal(true) }}>
             <img src="images/upload.svg" />
             Upload Character
@@ -84,7 +84,7 @@ function HamburgerMenu({
         <Divider />
         <MenuItem onClick={() => { handleClose(); setOpenCreditsModal(true) }}>Credits</MenuItem>
         <Divider />
-        {web3Context.provider && (
+        {!web3Context.provider && (
           <WalletButton
             character={character}
             setCharacter={setCharacter}
