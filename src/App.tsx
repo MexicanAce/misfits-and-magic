@@ -47,18 +47,20 @@ function App() {
   }, [character]);
 
   useEffect(() => {
-    // Listen for accountsChanged event
-    (window as any).ethereum.on("accountsChanged", async (accounts: any) => {
-      const provider = new Web3Provider((window as any).ethereum);
-      setProvider(provider);
+    if ((window as any).ethereum) {
+      // Listen for accountsChanged event
+      (window as any).ethereum.on("accountsChanged", async (accounts: any) => {
+        const provider = new Web3Provider((window as any).ethereum);
+        setProvider(provider);
 
-      const signerInstance = provider.getSigner();
-      setSigner(signerInstance);
+        const signerInstance = provider.getSigner();
+        setSigner(signerInstance);
 
-      setWalletAddress(accounts[0]);
+        setWalletAddress(accounts[0]);
 
-      await initContracts(web3Context, setCharacter, provider, signerInstance);
-    });
+        await initContracts(web3Context, setCharacter, provider, signerInstance);
+      });
+    }
   }, [
     setProvider,
     setSigner,
