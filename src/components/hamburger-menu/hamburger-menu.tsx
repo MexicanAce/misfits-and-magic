@@ -84,10 +84,12 @@ function HamburgerMenu({
         <Divider />
         <MenuItem onClick={() => { handleClose(); setOpenCreditsModal(true) }}>Credits</MenuItem>
         <Divider />
-        <WalletButton
-          character={character}
-          setCharacter={setCharacter}
-        />
+        {web3Context.provider && (
+          <WalletButton
+            character={character}
+            setCharacter={setCharacter}
+          />
+        )}
       </Menu>
 
       {openCharacterImportModal && (
