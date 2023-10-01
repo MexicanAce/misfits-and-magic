@@ -18,7 +18,7 @@ export const initContracts = async (
       CHARACTERS_CONTRACT_ABI,
       signer
     );
-    
+
     web3Context.setCharactersContractInstance(charactersContract);
 
     const allCharacterIDs: string[] = await charactersContract.getCharacterIDs();
@@ -33,10 +33,6 @@ export const initContracts = async (
       web3Context.setCharacterIDs(["first-character"]);
     }
 
-    if (allCharacterIDs.length == 0) {
-      return;
-    }
-
     const nftContract = new Contract(
       NFT_CONTRACT_ADDRESS,
       NFT_CONTRACT_ABI,
@@ -44,26 +40,40 @@ export const initContracts = async (
     );
 
     const address = await signer.getAddress();
-    const balance = 0 // TODO: await nftContract.balanceOf(address);
+    const balance = await nftContract.balanceOf(address);
     if (balance > 0) {
       let ownedNfts: ZkEraNft[] = [];
-      const ownedTokensResponse = await nftContract.tokensOfOwner(address);
 
-      for (let i = 0; i < ownedTokensResponse.length; i++) {
-        const tokenId = ownedTokensResponse[i];
+      // TODO: Enable this once "tokensOfOwner(...)" is implemented for NFT
+      // const ownedTokensResponse = await nftContract.tokensOfOwner(address);
 
-        const tokenURI = await nftContract.tokenURI(tokenId);
-        if (tokenURI == undefined || tokenURI == "") {
-          continue;
-        }
+      // for (let i = 0; i < ownedTokensResponse.length; i++) {
+      //   const tokenId = ownedTokensResponse[i];
 
-        const response = await fetch(tokenURI);
-        if (!response.ok) {
-          continue;
-        }
+      //   const tokenURI = await nftContract.tokenURI(tokenId);
+      //   if (tokenURI == undefined || tokenURI == "") {
+      //     continue;
+      //   }
 
-        ownedNfts.push((await response.json()) as ZkEraNft);
-      }
+      //   const response = await fetch(tokenURI);
+      //   if (!response.ok) {
+      //     continue;
+      //   }
+
+      //   ownedNfts.push((await response.json()) as ZkEraNft);
+      // }
+
+      ownedNfts.push({
+        "attributes": [
+          {
+            "type": "graffiti",
+            "value": "Purple"
+          }
+        ],
+        "description": "The zkSync Era's most beloved NFT.",
+        "image": "ipfs://QmdTzgiRz8HraX8Qzp5XJudYZ8h34deVo5ndxeoJNCvkcX",
+        "name": "Era User"
+      });
 
       web3Context.setNfts(ownedNfts);
     } else {

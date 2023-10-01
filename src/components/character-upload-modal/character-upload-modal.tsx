@@ -33,11 +33,6 @@ function CharacterUploadModal({
     if (web3Context.provider == null || web3Context.charactersContractInstance == null) {
       return;
     }
-    
-    if (hasNFT) {
-      // Skip estimations, it's free
-      return;
-    }
 
     // Get gas price 
     let gasPrice = await web3Context.provider.getGasPrice();
@@ -115,12 +110,13 @@ function CharacterUploadModal({
           rows={20}
           readOnly
           value={JSON.stringify(character, null, 2)}/>
-        {cost != "" && !hasNFT ? (
+        {cost != "" && !hasNFT && (
           <div className="estimated-cost">
             <p>Estimated Cost:</p>
             <p>{cost} ETH</p>
           </div>
-        ) : (
+        )}
+        {cost == "" && !hasNFT && (
           <div className="estimated-cost">Estimating cost...</div>
         )}
         {hasNFT && (
@@ -132,7 +128,7 @@ function CharacterUploadModal({
       </div>
       <button
         className="modal-button"
-        disabled={hasNFT || cost == "" || isUploading}
+        disabled={(!hasNFT && cost == "") || isUploading}
         onClick={onConfirm}>
         {isUploading ? "Uploading..." : "Confirm"}
       </button>

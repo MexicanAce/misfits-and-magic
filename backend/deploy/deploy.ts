@@ -34,7 +34,8 @@ export default async function (hre: HardhatRuntimeEnvironment) {
   const contractAddress = charactersContract.address;
   console.log(`${charactersArtifact.contractName} was deployed to ${contractAddress}`);
 
-  if (env != "local") {
+  // TODO: FIGURE OUT WHY THIS ISN'T WORKING FOR MAINNET
+  if (env == "testnet") {
     // Verify contract programmatically
     //
     // Contract MUST be fully qualified name (e.g. path/sourceName:contractName)
@@ -69,7 +70,8 @@ export default async function (hre: HardhatRuntimeEnvironment) {
   let paymasterBalance = await provider.getBalance(paymaster.address);
   console.log(`Paymaster balance is now ${ethers.utils.formatEther(paymasterBalance)} ETH`);
 
-  if (env != "local") {
+  // TODO: FIGURE OUT WHY THIS ISN'T WORKING FOR MAINNET
+  if (env == "testnet") {
     // Verify contract programmatically
     //
     // Contract MUST be fully qualified name (e.g. path/sourceName:contractName)

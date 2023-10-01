@@ -5,8 +5,8 @@ import "hardhat/console.sol";
 
 contract Characters {
     // Map of wallets to Characters by ID, this way, each address has an array of Characters assigned to them.
-    mapping (address => mapping(string => Character)) public characters;
-    mapping (address => string[]) public characterIDs;
+    mapping (address => mapping(string => Character)) private characters;
+    mapping (address => string[]) private characterIDs;
 
     struct Character {
         string jsonData;
