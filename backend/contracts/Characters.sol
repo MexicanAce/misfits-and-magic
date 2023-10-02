@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "hardhat/console.sol";
-
 contract Characters {
     // Map of wallets to Characters by ID, this way, each address has an array of Characters assigned to them.
     mapping (address => mapping(string => Character)) private characters;
@@ -18,14 +16,10 @@ contract Characters {
 
     // Gets the characters for the address who called the function
     function getCharacterIDs() public view returns (string[] memory){
-        console.log("getCharacterIDs called");
-
         return characterIDs[msg.sender];
     }
 
     function getCharacter(string memory id) public view returns (Character memory) {
-        console.log("getCharacter is called");
-
         require(characters[msg.sender][id].version > 0, "There are no characters for this address");
         
         return characters[msg.sender][id];
@@ -51,11 +45,6 @@ contract Characters {
         
         // require the version to be greater than 0
         require(version > 0, "version is empty!");
-
-        console.log("addCharacter called");
-        console.log(id);
-        console.log(jsonData);
-        console.log(version);
 
         // adds the character id to storage if new
         if (!characterIdExists(msg.sender, id)) {

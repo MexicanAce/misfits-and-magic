@@ -29,7 +29,7 @@ const getNetworkConfig = () => {
         ethNetwork: "mainnet",
         zksync: true,
         verifyURL:
-          "https://explorer.zksync.io/contract_verification",
+          "https://zksync2-mainnet-explorer.zksync.io/contract_verification",
       };
     default:
       throw new Error(`Unsupported DEPLOY_ENV: ${env}`);

@@ -1,178 +1,125 @@
 // // Local era_test_node
 // export const NETWORK_NAME = "zkSync Era Test Node";
 // export const NETWORK_ID = 260;
-// export const CHARACTERS_ADDRESS = "0x5671A4620F76e4A221104923744E8F424DcFcFB7";
+// export const CHARACTERS_ADDRESS = "0xd5e175D87494e45097D749EF1E658A9878211a74";
 // export const NFT_CONTRACT_ADDRESS = "0x1F13941D0995e111675124aF4B0F9bDcc70390C3";
-// export const PAYMASTER_CONTRACT_ADDRESS = "0x61C60Ae341E3909dad16a7f7E0A35dF760aa42AD";
+// export const PAYMASTER_CONTRACT_ADDRESS = "0xc3D177C542900F1e75068371d0887619e0c310c6";
 
 // // Testnet
 // export const NETWORK_NAME = "zkSync Era Testnet";
 // export const NETWORK_ID = 280;
-// export const CHARACTERS_ADDRESS = "0x8aa3Dc9245D7160AE8440861310B10CFbEEc152F";
+// export const CHARACTERS_ADDRESS = "0x881EB530D6c5aaDdBc3D9947313bb10ce6e1F5DE";
 // export const NFT_CONTRACT_ADDRESS = "0x1F13941D0995e111675124aF4B0F9bDcc70390C3";
-// export const PAYMASTER_CONTRACT_ADDRESS = "0x796d571454e14D5F2DA09828C88f0375E6e41014";
+// export const PAYMASTER_CONTRACT_ADDRESS = "0xfd46B79Ab05312474680Fa7BF4966882A6CBe04b";
 
 // Mainnet
 export const NETWORK_NAME = "zkSync Era Mainnet";
 export const NETWORK_ID = 324;
-export const CHARACTERS_ADDRESS = "0x5671A4620F76e4A221104923744E8F424DcFcFB7";
+export const CHARACTERS_ADDRESS = "0xd5e175D87494e45097D749EF1E658A9878211a74";
 export const NFT_CONTRACT_ADDRESS = "0x1F13941D0995e111675124aF4B0F9bDcc70390C3";
-export const PAYMASTER_CONTRACT_ADDRESS = "0x61C60Ae341E3909dad16a7f7E0A35dF760aa42AD";
+export const PAYMASTER_CONTRACT_ADDRESS = "0xc3D177C542900F1e75068371d0887619e0c310c6";
 
 export const CHARACTERS_CONTRACT_ABI =
-[
-    {
-      "anonymous": false,
-      "inputs": [
+    [
         {
-          "indexed": false,
-          "internalType": "address",
-          "name": "user",
-          "type": "address"
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "user",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "id",
+                    "type": "string"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "jsonData",
+                    "type": "string"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint16",
+                    "name": "version",
+                    "type": "uint16"
+                }
+            ],
+            "name": "characterAdded",
+            "type": "event"
         },
         {
-          "indexed": false,
-          "internalType": "string",
-          "name": "id",
-          "type": "string"
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "id",
+                    "type": "string"
+                },
+                {
+                    "internalType": "string",
+                    "name": "jsonData",
+                    "type": "string"
+                },
+                {
+                    "internalType": "uint16",
+                    "name": "version",
+                    "type": "uint16"
+                }
+            ],
+            "name": "addCharacter",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
         },
         {
-          "indexed": false,
-          "internalType": "string",
-          "name": "jsonData",
-          "type": "string"
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "id",
+                    "type": "string"
+                }
+            ],
+            "name": "getCharacter",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "string",
+                            "name": "jsonData",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "uint16",
+                            "name": "version",
+                            "type": "uint16"
+                        }
+                    ],
+                    "internalType": "struct Characters.Character",
+                    "name": "",
+                    "type": "tuple"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
         },
         {
-          "indexed": false,
-          "internalType": "uint16",
-          "name": "version",
-          "type": "uint16"
+            "inputs": [],
+            "name": "getCharacterIDs",
+            "outputs": [
+                {
+                    "internalType": "string[]",
+                    "name": "",
+                    "type": "string[]"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
         }
-      ],
-      "name": "characterAdded",
-      "type": "event"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "id",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "jsonData",
-          "type": "string"
-        },
-        {
-          "internalType": "uint16",
-          "name": "version",
-          "type": "uint16"
-        }
-      ],
-      "name": "addCharacter",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "name": "characterIDs",
-      "outputs": [
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        },
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "name": "characters",
-      "outputs": [
-        {
-          "internalType": "string",
-          "name": "jsonData",
-          "type": "string"
-        },
-        {
-          "internalType": "uint16",
-          "name": "version",
-          "type": "uint16"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "id",
-          "type": "string"
-        }
-      ],
-      "name": "getCharacter",
-      "outputs": [
-        {
-          "components": [
-            {
-              "internalType": "string",
-              "name": "jsonData",
-              "type": "string"
-            },
-            {
-              "internalType": "uint16",
-              "name": "version",
-              "type": "uint16"
-            }
-          ],
-          "internalType": "struct Characters.Character",
-          "name": "",
-          "type": "tuple"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "getCharacterIDs",
-      "outputs": [
-        {
-          "internalType": "string[]",
-          "name": "",
-          "type": "string[]"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    }
-  ];
+    ];
 export const NFT_CONTRACT_ABI = [
     {
         "inputs": [],
