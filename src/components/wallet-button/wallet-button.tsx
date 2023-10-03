@@ -10,6 +10,7 @@ import { Character } from "../../types/Character";
 import "./wallet-button.scss";
 import { initContracts } from "../../utils/web3-helper";
 import { ethers } from "ethers";
+import CreateNewCharacterModal from "../create-new-character-modal/create-new-character-modal";
 
 function WalletButton({
     character,
@@ -20,6 +21,7 @@ function WalletButton({
   }) {
   const web3Context = useContext(Web3Context);
   const [networkOk, setNetworkOk] = useState(false);
+  const [openCreateNewCharacterModal, setOpenCreateNewCharacterModal] = useState(false);
 
   useEffect(() => {
     checkNetwork();
@@ -74,7 +76,8 @@ function WalletButton({
 
         web3Context.setWalletAddress(data[0]);
 
-        await initContracts(web3Context, setCharacter, provider, signerInstance);
+        const hasCharacter = await initContracts(web3Context, setCharacter, provider, signerInstance);
+        setOpenCreateNewCharacterModal(!hasCharacter);
       }
     } catch (error) {
       console.error("Error connecting DApp to your wallet");
@@ -99,6 +102,15 @@ function WalletButton({
                 ? `Connected ${shortenAddress(web3Context.walletAddress)}`
                 : `Connect Wallet`}
         </button>
+      )}
+
+      {openCreateNewCharacterModal && (
+        <CreateNewCharacterModal
+          character={character}
+          setCharacter={setCharacter}
+          open={openCreateNewCharacterModal}
+          handleClose={() => setOpenCreateNewCharacterModal(false)}
+        />
       )}
     </div>
   );

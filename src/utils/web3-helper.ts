@@ -11,7 +11,8 @@ export const initContracts = async (
   setCharacter: Dispatch<SetStateAction<Character>>,
   provider: Web3Provider,
   signer: Signer,
-) => {
+): Promise<boolean> => {
+  let hasCharacter = false;
   if (provider && signer) {
     const charactersContract = new Contract(
       CHARACTERS_ADDRESS,
@@ -29,6 +30,7 @@ export const initContracts = async (
 
       const character = JSON.parse(characterData.jsonData) as Character;
       setCharacter(character);
+      hasCharacter = true;
     } else {
       web3Context.setCharacterIDs(["first-character"]);
     }
@@ -80,4 +82,6 @@ export const initContracts = async (
       web3Context.setNfts([]);
     }
   }
+
+  return hasCharacter;
 };

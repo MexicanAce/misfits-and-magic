@@ -1,0 +1,18 @@
+@import '../../colors.scss';
+
+.create-new-character {
+    display: flex;
+    flex-direction: column;    
+}
+
+.modal-content {
+    .cancel-button {
+        color: $medium-beige;
+        background: linear-gradient(0deg, #333 0%, #666 100%);
+        
+        &:hover {
+            cursor: pointer;
+            background: linear-gradient(0deg, #444 0%, #777 100%);
+        }
+    }
+}

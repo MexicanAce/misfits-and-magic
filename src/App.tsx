@@ -10,6 +10,7 @@ import { Contract, Signer, Web3Provider } from 'zksync-web3';
 import { ZkEraNft } from './types/ZkEraNFT';
 import Web3Context, { Web3ContextType } from './context/web3-context';
 import { initContracts } from './utils/web3-helper';
+import CreateNewCharacterModal from './components/create-new-character-modal/create-new-character-modal';
 
 function App() {
   const LocalStorageCharacterKey = 'mnm-character-v1';
@@ -26,6 +27,7 @@ function App() {
   const [nfts, setNfts] = useState<ZkEraNft[]>([]);
   const [characterIDs, setCharacterIDs] = useState<string[]>([]);
   const [walletAddress, setWalletAddress] = useState<string>("");
+  const [openCreateNewCharacterModal, setOpenCreateNewCharacterModal] = useState(false);
 
   const web3Context: Web3ContextType = {
     provider,
@@ -58,7 +60,8 @@ function App() {
 
         setWalletAddress(accounts[0]);
 
-        await initContracts(web3Context, setCharacter, provider, signerInstance);
+        const hasCharacter = await initContracts(web3Context, setCharacter, provider, signerInstance);
+        setOpenCreateNewCharacterModal(!hasCharacter);
       });
     }
   }, [
@@ -81,6 +84,15 @@ function App() {
           character={character}
           setCharacter={setCharacter}
         />
+
+        {openCreateNewCharacterModal && (
+          <CreateNewCharacterModal
+            character={character}
+            setCharacter={setCharacter}
+            open={openCreateNewCharacterModal}
+            handleClose={() => setOpenCreateNewCharacterModal(false)}
+          />
+        )}
 
         <div className="main-content">
           <div className="character-sheet-left">
